@@ -1,0 +1,161 @@
+<mvc:View 
+  controllerName="com.te.myPortfolio.controller.App" 
+  displayBlock="true" 
+  xmlns="sap.uxap" 
+  xmlns:m="sap.m" 
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  xmlns:table="sap.ui.table">
+  <m:App id="idAppControl">
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+      <headerTitle>
+        <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1">
+          <expandedHeading>
+            <m:Title id="_IDGenTitle1" text="{portfolio>/name}" />
+          </expandedHeading>
+
+          <snappedHeading>
+            <m:HBox id="_IDGenHBox1">
+              <f:Avatar 
+                id="_IDGenAvatar1" 
+                class="sapUiMediumMarginEnd" 
+                initials="JZ"/>
+              <m:VBox id="_IDGenVBox1">
+                <m:Title id="_IDGenTitle2" text="{portfolio>/name}" />
+                <m:Text id="_IDGenText1" text="{portfolio>/designation}" />
+              </m:VBox>
+            </m:HBox>
+          </snappedHeading>
+
+          <expandedContent>
+            <m:Text id="_IDGenText2" text="{portfolio>/designation}" />
+          </expandedContent>
+
+          <snappedTitleOnMobile>
+            <m:Title id="_IDGenTitle3" text="{portfolio>/name}" />
+          </snappedTitleOnMobile>
+        </ObjectPageDynamicHeaderTitle>
+      </headerTitle>
+
+      <headerContent>
+        <m:FlexBox id="_IDGenFlexBox1" wrap="Wrap" fitContainer="true">
+          <f:Avatar 
+            id="_IDGenAvatar2" 
+            class="sapUiMediumMarginEnd sapUiSmallMarginBottom" 
+            displaySize="L"
+            initials="JZ" />
+
+          <m:VBox id="_IDGenVBox3" class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+            <m:Title id="_IDGenTitle4" text="Email" class="sapUiTinyMarginBottom" />
+            <m:ObjectStatus id="_IDGenObjectStatus1" text="{portfolio>/email}" state="Success" class="sapMObjectStatusLarge" />
+          </m:VBox>
+
+          <m:VBox id="_IDGenVBox4" class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+            <m:Title id="_IDGenTitle5" text="Current Company" class="sapUiTinyMarginBottom" />
+            <m:ObjectStatus id="_IDGenObjectStatus2" text="{portfolio>/currentCompany}" icon="sap-icon://factory" class="sapMObjectStatusLarge" />
+          </m:VBox>
+
+          <m:VBox id="_IDGenVBox5" class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+            <m:Title id="_IDGenTitle6" text="Phone" class="sapUiTinyMarginBottom" />
+            <m:ObjectStatus id="_IDGenObjectStatus3" text="{portfolio>/phone}" state="Error" class="sapMObjectStatusLarge" />
+          </m:VBox>
+
+        </m:FlexBox>
+      </headerContent>
+
+      <sections>
+        <ObjectPageSection id="_IDGenObjectPageSection1" titleUppercase="false" title="Education Details">
+          <subSections>
+            <ObjectPageSubSection id="_IDGenObjectPageSubSection1" title="Education Details" >
+              <blocks>
+                <m:Table id="_IDGenTable2" class="sapUxAPObjectPageSubSectionAlignContent" width="auto" items="{portfolio>/education}">
+
+                  <m:columns>
+                    <m:Column id="_IDGenColumn1">
+                      <m:Text id="_IDGenText15" text="Class" />
+                    </m:Column>
+                    <m:Column id="_IDGenColumn2" minScreenWidth="Tablet" demandPopin="true">
+                      <m:Text id="_IDGenText16" text="Percentage" />
+                    </m:Column>
+                    <m:Column id="_IDGenColumn3" minScreenWidth="Tablet" demandPopin="true">
+                      <m:Text id="_IDGenText17" text="Year" />
+                    </m:Column>
+                  </m:columns>
+
+                  <m:items>
+                    <m:ColumnListItem id="_IDGenColumnListItem1">
+                      <m:Text id="_IDGenLink3" text="{portfolio>type}" />
+                      <m:Text id="_IDGenText20" text="{portfolio>per}" />
+                      <m:Text id="_IDGenText21" text="{portfolio>year}" />
+                    </m:ColumnListItem>
+                  </m:items>
+                </m:Table>
+              </blocks>
+            </ObjectPageSubSection>
+          </subSections>
+        </ObjectPageSection>
+
+        <ObjectPageSection id="_IDGenObjectPageSection2" titleUppercase="false" title="Certification Details">
+          <subSections>
+            <ObjectPageSubSection id="_IDGenObjectPageSubSection3" title="Certification Details">
+              <blocks>
+                <m:FlexBox 
+                  id="_IDGenFlexBox2" 
+                  items="{portfolio>/certification}" 
+                  alignItems="Start"
+                  wrap="Wrap">
+                  <m:items>
+                    <m:GenericTile 
+                      id="_IDGenGenericTile1"  
+                      header="{portfolio>name}" 
+                      subheader="{portfolio>year}"
+                      class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom"
+                      press="onTilePress">
+                      <m:TileContent id="_IDGenTileContent1">
+                        <m:ImageContent id="_IDGenImageContent1" src="sap-icon://competitor"/>
+                      </m:TileContent>
+                    </m:GenericTile>
+                  </m:items>
+                </m:FlexBox>
+              </blocks>
+            </ObjectPageSubSection>
+          </subSections>
+        </ObjectPageSection>
+        <ObjectPageSection id="_IDGenObjectPageSection3" titleUppercase="false" title="Employment Details">
+          <subSections>
+            <ObjectPageSubSection id="_IDGenObjectPageSubSection2" title="Employment Details">
+              <blocks>
+                <table:TreeTable 
+                  id="TreeTableBasic"
+                  rows="{
+                    path: 'portfolio>/employment',
+                    parameters: {
+                      arrayNames: ['projects']
+                    }
+                  }"
+                  selectionMode="None"
+                  enableSelectAll="false"
+                  ariaLabelledBy="title">
+                  <table:columns>
+                    <table:Column id="_IDGenColumn4" width="13rem">
+                      <m:Label id="_IDGenLabel1" text="Description"/>
+                      <table:template>
+                        <m:Text id="_IDGenText23" text="{portfolio>name}" wrapping="false"/>
+                      </table:template>
+                    </table:Column>
+                    <table:Column id="_IDGenColumn5" width="9rem">
+                      <m:Label id="_IDGenLabel2" text="Type"/>
+                      <table:template>
+                        <m:Text id="_IDGenText22" text="{portfolio>type}" wrapping="false"/>
+                      </table:template>
+                    </table:Column>
+                  </table:columns>
+                </table:TreeTable>
+              </blocks>
+            </ObjectPageSubSection>
+          </subSections>
+        </ObjectPageSection>
+      </sections>
+    </ObjectPageLayout>
+  </m:App>
+</mvc:View>

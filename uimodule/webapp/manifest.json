@@ -29,7 +29,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "rootView": {
-      "viewName": "com.te.myPortfolio.view.MainView",
+      "viewName": "com.te.myPortfolio.view.App",
       "type": "XML",
       "async": true,
       "id": "idAppControl"
@@ -82,7 +82,7 @@
           "viewType": "XML",
           "viewLevel": 1,
           "viewId": "idAppControl",
-          "viewName": "MainView"
+          "viewName": "App"
         }
       }
     }
